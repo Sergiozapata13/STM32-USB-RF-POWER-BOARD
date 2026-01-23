@@ -85,18 +85,58 @@ startup and improve stability.
 Crystal components are placed close to the transceiver pins, with short and symmetric
 traces to minimize phase noise and sensitivity to external interference.
 
-
 ## PCB Layout Strategy
-(To be documented)
 
-## Hardware Validation
-(To be documented)
+![PCB layout overview](images/layout.png)
+
+The PCB layout was developed with emphasis on signal integrity, power distribution, and
+noise isolation between digital, RF, and power domains. Component placement was driven
+by functional grouping, minimizing critical trace lengths and optimizing return current
+paths.
+
+High-frequency and noise-sensitive components, such as the RF transceiver and its
+matching network, are placed close together to reduce parasitic effects. The RF signal
+path is kept short and direct, with a clear reference to the ground plane to maintain
+controlled impedance.
+
+Power-related components are grouped to form compact current loops, reducing EMI and
+voltage ripple. Decoupling capacitors are placed as close as possible to the respective
+IC power pins, following best practices for high-speed digital and RF designs.
+
+USB differential pairs are routed together with consistent spacing and length matching,
+ensuring signal integrity and minimizing skew. Ground continuity is maintained under
+high-speed signals to provide a clear return path.
+
+![3D view of the assembled PCB](images/model_3D.png)
+
+A compact board outline was selected to balance mechanical constraints and routing
+requirements, while maintaining adequate spacing between connectors and sensitive
+circuitry. The final layout reflects a trade-off between compactness, manufacturability,
+and electrical performance.
+
+## Hardware Validation and Design Status
+
+The PCB was fully designed and reviewed at schematic and layout level; however, the
+board was not manufactured or assembled.
+
+Design validation focused on schematic correctness, component selection, and layout
+best practices. Electrical rules checks (ERC) and design rule checks (DRC) were used to
+verify connectivity, clearance, and manufacturability constraints.
+
+The design is considered ready for fabrication, with power integrity, signal integrity,
+and RF layout guidelines applied throughout the board. A bring-up and validation plan
+was defined, including power rail verification, SWD programming, USB enumeration, and
+basic RF communication tests.
+
+Although physical validation was not performed, the project demonstrates a complete
+end-to-end PCB design workflow, from system architecture definition to layout completion.
 
 ## Tools
 - KiCad
 - STM32CubeMX (pinout reference)
 
 ## Project Status
-- PCB designed
-- PCB manufactured and assembled
-- Hardware bring-up and validation completed
+- Schematic and PCB layout completed
+- Design reviewed and DRC/ERC verified
+- Ready for fabrication
+
