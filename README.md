@@ -50,7 +50,7 @@ and robust operation during connection and disconnection events.
 
 ## RF Design
 
-![NRF24 transceiver schematic](images/NRF24 Transceiver.png)
+![NRF24 transceiver schematic](images/NRF24_Transceiver.png)
 
 The RF subsystem is based on the nRF24L01+ 2.4 GHz transceiver, interfaced with the
 STM32 microcontroller through an SPI interface. The device is powered from the 3.3 V
