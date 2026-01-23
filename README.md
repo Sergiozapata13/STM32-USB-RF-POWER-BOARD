@@ -13,19 +13,18 @@ Designed in KiCad with focus on signal integrity, power distribution, EMI mitiga
   
 ## Power Architecture
 
-The board implements a regulated power architecture designed to support USB-powered
-operation as well as external supply input. A buck regulator is used for efficient
-voltage conversion, followed by local LDO regulation and ferrite bead isolation to
-ensure clean power delivery to sensitive domains.
+The board is powered exclusively from the USB 5 V rail. Input protection is provided
+by a resettable fuse and a ferrite bead to limit overcurrent conditions and attenuate
+high-frequency noise coming from the USB source.
 
-Key design considerations include:
-- Separation of high-current switching paths from sensitive analog and RF circuitry
-- Compact high-current loops in the switching regulator section
-- Local decoupling capacitors placed close to IC power pins
-- Ferrite beads used to isolate digital, analog, and RF supply domains
+A low-dropout linear regulator (XC6206P332MR) is used to generate the 3.3 V rail required
+by the STM32 microcontroller and RF transceiver. This device was selected due to its low
+noise characteristics and simplicity, which are suitable for low-current applications
+(≤200 mA).
 
-This architecture was selected to balance efficiency, noise performance, and layout
-simplicity while maintaining robustness during hardware bring-up and validation.
+Bulk and local decoupling capacitors are placed at the regulator input and output to
+ensure stability and reduce supply ripple. Reverse polarity protection was intentionally
+omitted, as USB is the only intended power source.
 
 ## USB Design
 (To be documented)
