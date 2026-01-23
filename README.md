@@ -13,18 +13,20 @@ Designed in KiCad with focus on signal integrity, power distribution, EMI mitiga
   
 ## Power Architecture
 
+![Power architecture schematic](images/power_schematic.png)
+
 The board is powered exclusively from the USB 5 V rail. Input protection is provided
-by a resettable fuse and a ferrite bead to limit overcurrent conditions and attenuate
-high-frequency noise coming from the USB source.
+by a resettable fuse (100 mA) and a ferrite bead (100 Ω @ 100 MHz) to limit overcurrent
+conditions and attenuate high-frequency noise coming from the USB source.
 
-A low-dropout linear regulator (XC6206P332MR) is used to generate the 3.3 V rail required
-by the STM32 microcontroller and RF transceiver. This device was selected due to its low
-noise characteristics and simplicity, which are suitable for low-current applications
-(≤200 mA).
+A low-dropout linear regulator (XC6206P332MR) is used to generate the 3.3 V supply
+required by the STM32 microcontroller and the RF transceiver. This regulator was
+selected due to its low noise characteristics and simplicity, which are well suited
+for low-current embedded applications (up to 200 mA).
 
-Bulk and local decoupling capacitors are placed at the regulator input and output to
-ensure stability and reduce supply ripple. Reverse polarity protection was intentionally
-omitted, as USB is the only intended power source.
+Bulk capacitors are placed at both the regulator input and output to ensure stability
+and reduce supply ripple. Reverse polarity protection was intentionally omitted, as the
+USB connector is the only intended power source for the board.
 
 ## USB Design
 (To be documented)
