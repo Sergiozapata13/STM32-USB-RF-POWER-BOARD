@@ -48,9 +48,43 @@ reduce exposure to ESD events.
 This design follows common USB layout recommendations to ensure reliable communication
 and robust operation during connection and disconnection events.
 
-
 ## RF Design
-(To be documented)
+
+![NRF24 transceiver schematic](images/NRF24 Transceiver.png)
+
+The RF subsystem is based on the nRF24L01+ 2.4 GHz transceiver, interfaced with the
+STM32 microcontroller through an SPI interface. The device is powered from the 3.3 V
+rail, with dedicated local decoupling capacitors placed close to the VDD and VDD_PA
+pins to minimize supply noise and ensure stable RF operation.
+
+Special attention was given to power integrity for the RF section by separating the
+PA supply domain and providing adequate bulk and high-frequency decoupling, following
+the manufacturer’s reference design guidelines.
+
+### Antenna Matching Network
+
+![Antenna impedance matching network](images/antena.png)
+
+The RF output is routed through a discrete impedance matching network before reaching
+an SMA connector. The matching network is implemented using lumped inductors and
+capacitors, allowing flexibility for tuning during bring-up or testing.
+
+The RF trace is intended to be routed as a 50 Ω controlled-impedance transmission line.
+Component placement and routing were optimized to keep the RF path as short and direct
+as possible, reducing losses and minimizing parasitic effects.
+
+### RF Crystal Oscillator
+
+![RF crystal oscillator](images/crystal.png)
+
+A dedicated 16 MHz crystal oscillator is used for the nRF24L01+ transceiver. The crystal
+load capacitors were selected based on the required load capacitance and estimated
+stray capacitance of the PCB layout. A parallel resistor is included to aid oscillator
+startup and improve stability.
+
+Crystal components are placed close to the transceiver pins, with short and symmetric
+traces to minimize phase noise and sensitivity to external interference.
+
 
 ## PCB Layout Strategy
 (To be documented)
