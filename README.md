@@ -29,7 +29,25 @@ and reduce supply ripple. Reverse polarity protection was intentionally omitted,
 USB connector is the only intended power source for the board.
 
 ## USB Design
-(To be documented)
+
+![USB connector and ESD protection](images/USB_connector.png)
+
+The USB interface is implemented using a Micro-USB connector and is intended to provide
+both power and data connectivity. The VBUS line is used exclusively as the main power
+source for the board.
+
+Electrostatic discharge (ESD) protection is provided by a USBLC6-2SC6 device placed
+between the USB connector and the microcontroller. This device protects the D+ and D−
+lines against ESD events while preserving signal integrity.
+
+The USB differential data lines (D+ and D−) are routed as a matched differential pair
+and are clearly labeled to support controlled impedance routing during PCB layout.
+Protection components are placed close to the connector to minimize trace length and
+reduce exposure to ESD events.
+
+This design follows common USB layout recommendations to ensure reliable communication
+and robust operation during connection and disconnection events.
+
 
 ## RF Design
 (To be documented)
